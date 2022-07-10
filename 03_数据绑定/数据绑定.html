@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>初识Vue</title>
+    <script src="../js/vue.js"></script>
+    
+</head>
+<body>
+    <div id="root">
+        单项数据绑定:<input type="text" v-bind:value="name"><br/>
+        双向数据绑定:<input type="text" v-model:value="name"><br/>
+        双向数据绑定(v-model:value ===> v-model):<input type="text" v-model="name">
+        <!-- v-model 一般用于表单类元素上（输入类元素 一般带value） -->
+    </div>
+    <script type="text/javascript">
+       Vue.config.productionTip = false;   //阻止Vue 在启动时生成 生产提示
+
+       new Vue({
+           el:"#root",
+           data:{
+               name:"world"
+           }
+       })
+    
+    </script>
+</body>
+</html>

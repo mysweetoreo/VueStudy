@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>键盘事件</title>
+    <script src="../js/vue.js"></script>
+    
+</head>
+<body>
+    <div id="root">
+        <H2>hello,{{name.toUpperCase()}},{{address}},{{age}}</H2>
+    </div>
+    <script type="text/javascript">
+       //阻止Vue 在启动时生成 生产提示
+       Vue.config.productionTip = false;   
+        
+       const x = new Vue({
+           el:"#root",
+           data:{
+           }
+       })
+    
+    </script>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件修饰符</title>
+    <script src="../js/vue.js"></script>
+</head>
+<style>
+    *{
+        margin-top: 20px;
+    }
+    .box1{
+       height: 200px;
+       background-color: skyblue; 
+    }
+    .box2{
+       height: 100px;
+       background-color: yellow; 
+    }
+    .list{
+        height: 200px;
+        width: 200px; 
+        overflow: auto;
+        background-color: red;
+    }
+    li{
+        height: 100px;
+        overflow: true;
+    }
+</style>
+<body>
+    <!-- 
+        Vue中的事件的修饰符
+            1.prevent：阻止默认事件
+            2.stop：阻止冒泡事件
+            3.once：事件只触发一次
+            4.capture：使用事件的捕获模式
+            5.self：只有event.target 是当前操作的元素才触发事件
+            6.passive：事件的默认行为立即执行，无需等待事件的回调执行完毕
+     -->
+
+    <div id="root">
+        <!--1. prevent：阻止默认事件  阻止页面的跳转--> 
+        <a href="https://www.baidu.com" @click.prevent="showInfo">点我显示提示信息</a>
+
+        <!--2. stop：阻止冒泡事件 阻止box1 div 继续弹出alert-->
+        <div id="box1" @click="showInfo">
+           <button @click.stop="showInfo">点我提示信息</button>
+        </div>
+
+        <!-- 3.once：事件只触发一次  使alert只弹出一次-->
+        <button @click.once="showInfo">点我提示信息</button>
+        
+        <!-- 4.capture:使用事件的捕获模式 -->
+        <div class="box1" @click.capture="showMsg(1)">
+                box1
+            <div class="box2" @click="showMsg(2)">
+                box2
+            </div>
+        </div>
+        <!-- 5.self:只有event.target 是当前操作的元素才触发事件 -->
+        <div class="box1" @click.self="showMsg2">
+            box1
+            <div class="box2">
+                box1
+                <button @click="showMsg2">这是一个button按钮</button>
+            </div>
+        </div>
+        <!-- 6.passive: 事件的默认行为立即执行，无需等待事件的回调执行完毕 -->
+        <!-- (鼠标滚轮)@wheel.passive 无需等待直接执行  (滑动滚动条)@scroll -->
+        <ul @wheel.passive="demo" class="list">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+        </ul>
+
+    </div>
+    
+    <script type="text/javascript">
+       Vue.config.productionTip = false;   //阻止Vue 在启动时生成 生产提示
+        
+       const x = new Vue({
+           el:"#root",
+           data:{
+               name:"world",
+           },
+           methods:{
+               showInfo(){
+                   alert("hello,world!!");
+               },
+               showMsg(num){
+                console.log(num);
+               },
+               showMsg2(e){
+                console.log(e.target);
+               },
+               demo(){
+                for (let i = 0; i < 100000; i++) {
+                    console.log("@");
+                }
+               }
+               
+           }
+       })
+    
+    </script>
+</body>
+</html>
