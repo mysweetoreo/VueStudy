@@ -4,11 +4,23 @@
     <meta charset="UTF-8">
     <title>键盘事件</title>
     <script src="../js/vue.js"></script>
-    
+    <!-- 
+        1.Vue中常用的按键别名：
+            回车 => enter
+            删除 => delete (捕获“删除”和“退格”键)
+            退出 => esc
+            空格 => space
+            换行 => tab (特殊，必须配合keydown去使用)
+            上 => up
+            下 => down
+            左 => left
+            右 => right
+     -->
 </head>
 <body>
     <div id="root">
-        <H2>hello,{{name.toUpperCase()}},{{address}},{{age}}</H2>
+        <h2>欢迎来到{{name}}--地址--{{address}}--年龄--{{age}}</h2>
+        <input type="text" placeholder="按下回车提示输入" @keyup.enter="showInfo">
     </div>
     <script type="text/javascript">
        //阻止Vue 在启动时生成 生产提示
@@ -17,9 +29,15 @@
        const x = new Vue({
            el:"#root",
            data:{
-            name:"德州学院",
+            name:"德克萨斯州烤鸭学院",
             address:"鲁北平原",
             age:80
+           },
+           methods:{
+            showInfo(e){
+                //if(e.keyCode!=13) return    //不是回车就返回
+                console.log(e.target.value);
+            }
            }
        })
     
