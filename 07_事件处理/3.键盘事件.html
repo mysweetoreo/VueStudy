@@ -20,7 +20,9 @@
 <body>
     <div id="root">
         <h2>欢迎来到{{name}}--地址--{{address}}--年龄--{{age}}</h2>
-        <input type="text" placeholder="按下回车提示输入" @keyup.enter="showInfo">
+        <!-- <input type="text" placeholder="按下回车提示输入" @keyup.enter="showInfo"> -->
+        <!-- 组合键 -->
+        <input type="text" placeholder="按下回车提示输入" @keyup.ctrl.y="showInfo">
     </div>
     <script type="text/javascript">
        //阻止Vue 在启动时生成 生产提示
