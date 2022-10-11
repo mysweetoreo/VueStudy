@@ -10,7 +10,7 @@
     <div id="root">
         姓:<input type="text" v-model="firstName"><br/><br/>
         名:<input type="text" v-model="lastName"><br/><br/>
-        <span>姓名:{{firstName}}-{{lastName}}</span>
+        <span>姓名:{{fullName()}}</span>
     </div>
     <script type="text/javascript">
        //阻止Vue 在启动时生成 生产提示
@@ -21,6 +21,11 @@
            data:{
                firstName:"张",
                lastName:"三"
+           },
+           methods:{
+            fullName(){
+                return this.firstName + '-' + this.lastName;
+            } 
            }
        })
     
