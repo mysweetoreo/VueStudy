@@ -10,7 +10,8 @@
     <div id="root">
         姓:<input type="text" v-model="firstName"><br/><br/>
         名:<input type="text" v-model="lastName"><br/><br/>
-        <span>姓名:{{fullName()}}</span>
+        <span>姓名:{{firstName}}--{{lastName}}</span> <!-- 插值语法 -->
+        <span>姓名:{{fullName()}}</span><!-- method 方式 -->
     </div>
     <script type="text/javascript">
        //阻止Vue 在启动时生成 生产提示

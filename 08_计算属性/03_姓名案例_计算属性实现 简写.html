@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>02_姓名案例_计算属性实现</title>
+    <script src="../js/vue.js"></script>
+    
+</head>
+<body>
+    <div id="root">
+        姓:<input type="text" v-model="firstName"><br/><br/>
+        名:<input type="text" v-model="lastName"><br/><br/>
+        <!-- <span>姓名:{{firstName}}--{{lastName}}</span> 插值语法 -->
+        <!-- <span>姓名:{{fullName()}}</span>method 方式 -->
+        <span>姓名:{{fullName}}</span><!-- 插值语法调用  -->
+        
+    </div>
+    <script type="text/javascript">
+       //阻止Vue 在启动时生成 生产提示
+       Vue.config.productionTip = false;   
+        
+       const vm = new Vue({
+           el:"#root",
+           data:{
+               firstName:"张",
+               lastName:"三"
+           },
+           //计算属性
+           computed:{
+            // 完整写法
+            // fullName:{
+            //     get(){
+            //         console.log('@get被调用了');
+            //         return this.firstName + "-" + this.lastName
+            //     },
+            //     set(value){
+            //         var arr = value.split("-");
+            //         this.firstName = arr[0];
+            //         this.lastName = arr[1];
+            //     }
+            // }
+            // 简写
+            fullName(){
+                console.log('@get被调用了');
+                return this.firstName + "-" + this.lastName
+            }
+           }
+       })
+    
+    </script>
+</body>
+</html>
