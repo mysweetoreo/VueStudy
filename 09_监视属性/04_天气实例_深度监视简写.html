@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>04_天气实例_深度监视简写</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <H2>今天天气很{{info}}</H2>
+        <button @click="changeWeather">改变天气</button>
+    </div>
+    <script type="text/javascript">
+        Vue.config.productionTip =false;
+        const vm = new Vue({
+           el:"#root",
+           data:{
+            isHot:true
+           },
+           //计算属性
+           computed:{
+             info(){
+                return this.isHot ? '炎热' : '凉爽';
+             }
+           },
+           methods: {
+            changeWeather(){
+                this.isHot = !this.isHot;
+            }
+           },
+/*         watch:{
+            isHot:{
+                //immediate:true,//初始化的时候让 handler 被调用一下
+                //deep:true,
+                handler(newValue,oldValue){
+                    console.log("isHost的值被修改了"+newValue,oldValue);
+                }
+            },
+           }, */
+
+           /* 简写监视 */
+           /* watch:{
+            isHot(newValue,oldValue){
+                console.log("isHost的值被修改了"+newValue,oldValue);
+            },
+           }, */
+        })
+
+        vm.$watch('isHot',{
+            immediate:true,//初始化的时候让 handler 被调用一下
+            deep:true,
+            handler(newValue,oldValue){
+            console.log("isHost的值被修改了"+newValue,oldValue);
+            }
+        })
+        /* 简写 */
+        vm.$watch('isHot',function(newValue,oldValue){
+            console.log("简写监视属性",newValue,oldValue);
+        })
+    </script>
+</body>
+</html>
