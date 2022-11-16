@@ -11,17 +11,15 @@
         <H2>hello,{{name.toUpperCase()}},{{address}},{{age}}</H2>
     </div>
     <script type="text/javascript">
-       //阻止Vue 在启动时生成 生产提示
-       Vue.config.productionTip = false;   
-        
-       const x = new Vue({
+        Vue.config.productionTip =false;
+        const x = new Vue({
            el:"#root",
            data:{
                name:"world",
                address:"山东蓬莱",
                age:"19"
            }
-       })
+        })
     
     </script>
 </body>
