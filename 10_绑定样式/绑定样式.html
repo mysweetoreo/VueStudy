@@ -39,12 +39,23 @@
 </head>
 <body>
     <div id="root">
+        <!-- 绑定class样式字符串写法 适用于：类名确定，需要动态指定-->
         <div class="basic" :class="mood" @click="changeMood">姓名:{{name}}</div>
         <br/>
+        <!-- 绑定class样式数组写法  适用于:要绑定的样式个数不确定，名字也不确定-->
         <div class="basic" :class="classArr">姓名:{{name}}</div>
         <br/>
+        <!-- 绑定class样式对象写法 适用于:要绑定的样式个数确定，名字也确定，但要动态决定用不用-->
         <div class="basic" :class="classFlag">姓名:{{name}}</div>
         <br/>
+        <!-- 内联写法 -->
+        <!-- 绑定style样式 对象 写法-->
+        <div class="basic" :style="styleObj">姓名:{{name}}</div>
+        <br/>
+        <!-- 绑定style样式 数组 写法-->
+        <div class="basic" :style="styleArr">姓名:{{name}}</div>
+        <br/>
+
     </div>
     <script type="text/javascript"> 
        const vm = new Vue({
@@ -57,7 +68,23 @@
                 gjc1:true,
                 gjc2:false,
                 gjc3:true
-             }
+             },
+             styleObj:{
+                fontSize:'40px',
+                color:'red',
+             },
+             styleObj2:{
+                backgroundColor:'green'
+             },
+             styleArr:[
+                {
+                    fontSize:'40px',
+                    color:'red',
+                },
+               {
+                    backgroundColor:'green'
+                }
+            ]
            },
            methods: {
                 changeMood(){
